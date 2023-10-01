@@ -1,0 +1,79 @@
+
+{{>/include/header}}
+
+	<h2>Utilisateurs</h2>
+	
+	{{#login}}
+	
+	 <h1>Bienvenue, {{login}} !</h1>
+	 
+	 {{/login}}
+	 
+	 {{^login}}
+	 
+	 {{/login}}
+	
+	<form action="/user/filtre" method="post">
+		<input type="text" name="search">
+		<input type="submit" value="rechercher"  class="btn btn-primary"/>
+	</form>
+	
+	
+	
+	<a href="/user/create"  class="btn btn-warning" role="button" style="margin:2em;">Ajouter un utilisateur</a>
+	
+	{{^login}}
+	<a href="/user/login"  class="btn btn-warning" role="button" style="margin:2em;">Se connecter</a>
+	{{/login}}
+	
+	{{#login}}
+	<a href="/user/logout"  class="btn btn-warning" role="button" style="margin:2em;">Se déconnecter</a>
+	{{/login}}
+	
+	<a href="/list"  class="btn btn-warning" role="button" style="margin:2em;">Afficher toutes les listes</a>
+	
+	<table class="table table-hover table-dark">
+	
+	
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Login</th>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
+      <th scope="col">Listes</th>
+      <th scope="col">Partagées</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#user}}
+    <tr>
+      <th scope="row"></th>
+      <td>{{login}}</td>
+      <td>{{email}}</td>
+      <td>{{password}}</td>
+      <td>{{listes.size}}</td>
+      <td>
+				<div class="button" >
+					<form action="/user/delete" method="post">
+						<input class="btn btn-danger" type="submit" value="X" >
+						<input name="id" value="{{id}}" type="hidden">
+					</form>
+					
+					<a href="/user/update/{{id}}" class="btn btn-primary">Modifier</a>
+					
+					<form action="/list/{{id}}" method="get">
+						<input class="btn btn-primary" type="submit" value="Listes" >
+					</form>
+					
+					
+				</div>
+				</td>
+    </tr>
+  </tbody>
+  {{/user}}
+</table>
+
+</body>
+</html>

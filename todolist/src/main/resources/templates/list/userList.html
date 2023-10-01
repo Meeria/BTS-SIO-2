@@ -1,0 +1,43 @@
+{{>/include/header}}
+
+<h2>Voici les ToDoList</h2>
+
+<a href="/list/create"  class="btn btn-warning" style="margin:2em;" role="button">Créer une liste</a>
+
+<table  class="table table-hover table-dark">
+	<thead>
+	<tr>
+		<th scope="col">Nom</th>
+      	<th scope="col">Propriétaire</th>
+      	<th scope="col"></th>
+	</tr>
+		{{#list}}
+			<tr>
+				<td>{{name}}</td>
+				<td>{{utilisateur.login}}</td>
+				<td>
+					<div style="display:flex; justify-content: end; gap:15px;">
+						<form action="/list/delete" method="post">
+							<input class="btn btn-danger" type="submit" value="X" >
+							<input name="id" value="{{id}}" type="hidden">
+							
+							
+							<input name="idUtilisateur" value="{{idUtilisateur}}">
+						
+						</form>
+						
+						<form action="/list/edit" method="get">
+							<input class="btn btn-warning" type="submit" value="Modifier" >
+							<input name="id" value="{{id}}" type="hidden">
+						</form>
+					</div>
+				</td>
+				
+			</tr>
+		{{/list}}
+	</table>
+
+</body>
+
+
+</html>

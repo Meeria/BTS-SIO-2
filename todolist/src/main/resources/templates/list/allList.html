@@ -1,0 +1,24 @@
+
+{{>/include/header}}
+
+<h2>Toute les ToDoListes</h2>
+
+<a href="/list/create"  class="btn btn-warning" style="margin:2em;" role="button">Créer une liste</a>
+
+<table  class="table table-hover table-dark">
+	<thead>
+	<tr>
+		<th scope="col">Nom de la liste</th>
+		<th scope="col">propriétaires</th>
+	</tr>
+		{{#list}}
+			<tr>
+				<td>{{name}}</td>
+				<td>{{utilisateur.login}}</td>
+				
+			</tr>
+		{{/list}}
+	</table>
+
+</body>
+</html>

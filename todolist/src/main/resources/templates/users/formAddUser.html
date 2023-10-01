@@ -1,0 +1,39 @@
+{{> /include/header }}
+
+<h2>Utilisateur</h2>
+
+{{#user}}
+	{{#id}}
+		<p>Modification</p>
+		<input type="hidden" name="id" value="{{id}}">
+	{{/id}}
+	{{^id}}
+		<p>Création</p>
+	{{/id}}
+	<form method="post" class="form">
+		<div class="form-group">
+		    <label for="login">Login</label>
+			<input class="form-control" type="text" id="login" name="login" value="" placeholder="Login">
+		</div>
+		<div class="form-group">
+		    <label for="email">Email</label>
+			<input class="form-control" type="email" id="email" name="email" value=""  placeholder="Email">
+		</div>
+		<div class="form-group">
+		    <label for="password">Mot de passe</label>
+			<input class="form-control" type="password" id="password" name="password" value="" placeholder="Mot de passe">
+		</div>
+		<div class="form-group">
+		    <label for="listes">Listes</label>
+			<textarea class="form-control" id="myLists" name="myLists" placeholder="listes"></textarea>
+		</div>
+		<hr>
+		<button class="btn btn-success" type="submit">
+			Valider
+		</button>
+		<a href="/users" class="btn btn-danger">
+			Annuler
+		</a>
+		
+	</form>
+{{/user}}
